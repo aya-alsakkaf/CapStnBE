@@ -12,7 +12,7 @@ const answerSchema = new Schema({
 const responseSchema = new Schema({
   surveyId: { type: Schema.Types.ObjectId, ref: "Survey", required: true },
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-  startedAt: { type: Date, default: Date.now },
+  startedAt: { type: Date },
   submittedAt: { type: Date, required: true },
   durationMs: { type: Number },
   isFlaggedSpam: { type: Boolean, default: false },
