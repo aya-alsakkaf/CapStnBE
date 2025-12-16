@@ -7,6 +7,7 @@ import path from "path";
 import dotenv from "dotenv";
 import connectDB from "./database";
 import userRouter from "./api/User/user.routers";
+import aiRouter from "./api/AiAnalysis/ai.routes";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/media", express.static(path.join(__dirname, "../uploads")));
 
 //routers ...
 app.use("/api/user", userRouter);
+app.use("/api/ai", aiRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandling);
