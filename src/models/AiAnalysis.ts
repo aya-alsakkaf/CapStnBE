@@ -98,6 +98,25 @@ const dataQualitySchema = new Schema(
   },
   { _id: false }
 );
+
+const dataSchema = new Schema(
+  {
+    overview: {
+      type: String,
+      required: true,
+    },
+    surveys: {
+      type: [surveySummarySchema],
+      default: [],
+    },
+    dataQualityNotes: {
+      type: dataQualitySchema,
+      required: true,
+    },
+  },
+  { _id: false }
+);
+
 const aiAnalysisSchema = new Schema(
   {
     ownerId: {
@@ -125,18 +144,8 @@ const aiAnalysisSchema = new Schema(
     },
 
     data: {
-      overview: {
-        type: String,
-        required: true,
-      },
-      surveys: {
-        type: [surveySummarySchema],
-        default: [],
-      },
-      dataQualityNotes: {
-        type: dataQualitySchema,
-        required: true,
-      },
+      type: dataSchema,
+      required: true,
     },
   },
   {
