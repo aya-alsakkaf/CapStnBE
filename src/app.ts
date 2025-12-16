@@ -7,6 +7,7 @@ import path from "path";
 import dotenv from "dotenv";
 import connectDB from "./database";
 import userRouter from "./api/User/user.routers";
+import aiRouter from "./api/AiAnalysis/ai.routes";
 import surveyRouter from "./api/Survey/survey.router";
 import questionRouter from "./api/Question/quetion.router";
 import responseRouter from "./api/Response/response.router";
@@ -21,10 +22,13 @@ app.use(express.json());
 app.use("/media", express.static(path.join(__dirname, "../uploads")));
 
 //routers ...
+
+app.use("/api/ai", aiRouter);
 app.use("/user", userRouter);
 app.use("/survey", surveyRouter);
 app.use("/question", questionRouter);
 app.use("/response", responseRouter);
+
 
 app.use(notFoundHandler);
 app.use(errorHandling);
