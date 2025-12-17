@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Survey from "../../models/Survey";
+import mongoose from "mongoose";
+import { customRequestType } from "../../types/http";
 
 const createSurvey = async (
   req: Request,
@@ -7,12 +9,20 @@ const createSurvey = async (
   next: NextFunction
 ) => {
   try {
-    const { title, description, rewardPoints, estimatedMinutes } = req.body;
+    const { title, description, rewardPoints, estimatedMinutes, draft } =
+      req.body;
+
+    const creatorId = (req as customRequestType).user?.id;
+    if (!creatorId) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
     const survey = await Survey.create({
       title,
       description,
       rewardPoints,
       estimatedMinutes,
+      draft,
+      creatorId: new mongoose.Types.ObjectId(creatorId),
     });
 
     res.status(201).json({ message: "Survey created successfully", survey });

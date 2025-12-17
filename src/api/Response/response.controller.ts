@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response as ExpressResponse } from "express";
-import Responses from "../../models/Response";
+import Response from "../../models/Response";
 
 const createResponse = async (
   req: Request,
@@ -17,7 +17,7 @@ const createResponse = async (
       trustImpact,
       answers,
     } = req.body;
-    const response = await Responses.create({
+    const response = await Response.create({
       surveyId,
       userId,
       startedAt,
@@ -42,7 +42,7 @@ const getResponseById = async (
 ) => {
   try {
     const { id } = req.params;
-    const response = await Responses.findById(id);
+    const response = await Response.findById(id);
     res
       .status(200)
       .json({ message: "Response fetched successfully", response });
@@ -68,7 +68,7 @@ const updateResponse = async (
       trustImpact,
       answers,
     } = req.body;
-    const response = await Responses.findByIdAndUpdate(id, {
+    const response = await Response.findByIdAndUpdate(id, {
       surveyId,
       userId,
       startedAt,
@@ -93,7 +93,7 @@ const deleteResponse = async (
 ) => {
   try {
     const { id } = req.params;
-    await Responses.findByIdAndDelete(id);
+    await Response.findByIdAndDelete(id);
     res.status(200).json({ message: "Response deleted successfully" });
   } catch (error) {
     next(error);
@@ -107,7 +107,7 @@ const getResponsesBySurveyId = async (
 ) => {
   try {
     const { surveyId } = req.params;
-    const responses = await Responses.find({ surveyId });
+    const responses = await Response.find({ surveyId });
     res
       .status(200)
       .json({ message: "Responses fetched successfully", responses });
@@ -123,7 +123,7 @@ const getResponsesByUserId = async (
 ) => {
   try {
     const { userId } = req.params;
-    const responses = await Responses.find({ userId });
+    const responses = await Response.find({ userId });
     res
       .status(200)
       .json({ message: "Responses fetched successfully", responses });
@@ -138,7 +138,7 @@ const getResponses = async (
   next: NextFunction
 ) => {
   try {
-    const responses = await Responses.find();
+    const responses = await Response.find();
     res
       .status(200)
       .json({ message: "Responses fetched successfully", responses });

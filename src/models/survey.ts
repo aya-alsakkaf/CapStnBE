@@ -21,6 +21,7 @@ const surveySchema = new Schema(
     draft: {
       type: String,
       enum: ["published", "unpublished"],
+      default: "unpublished",
       required: true,
     },
     creatorId: { type: Schema.Types.ObjectId, ref: "User", required: true },
