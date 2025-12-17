@@ -16,8 +16,8 @@ import { authorize } from "../../middeware/Authorize";
 
 const surveyRouter = Router();
 
-// surveyRouter.get("/published", getPublishedSurveys);
-// surveyRouter.get("/unpublished", getUnpublishedSurveys);
+surveyRouter.get("/published", getPublishedSurveys);
+surveyRouter.get("/unpublished", getUnpublishedSurveys);
 surveyRouter.get("/:id", getSurveyById);
 surveyRouter.put("/:id", updateSurvey);
 surveyRouter.delete("/:id", deleteSurvey);
