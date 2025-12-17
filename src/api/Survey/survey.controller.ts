@@ -7,12 +7,13 @@ const createSurvey = async (
   next: NextFunction
 ) => {
   try {
-    const { title, description, rewardPoints, estimatedMinutes } = req.body;
+    const { title, description, rewardPoints, estimatedMinutes, draft } = req.body;
     const survey = await Survey.create({
       title,
       description,
       rewardPoints,
       estimatedMinutes,
+      draft,
     });
 
     res.status(201).json({ message: "Survey created successfully", survey });
