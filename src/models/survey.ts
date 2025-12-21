@@ -8,7 +8,7 @@ const surveySchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
     rewardPoints: {
       type: Number,
