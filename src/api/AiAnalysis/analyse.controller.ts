@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { OpenAI } from "openai";
 import { customRequestType } from "../../types/http";
 import AiAnalysis from "../../models/AiAnalysis";
-import Survey from "../../models/Survey";
-import Question from "../../models/Question";
-import Responses from "../../models/Response";
+import Survey from "../../models/survey";
+import Question from "../../models/question";
+import Responses from "../../models/response";
 import mongoose from "mongoose";
 
 const openaiClient = new OpenAI({

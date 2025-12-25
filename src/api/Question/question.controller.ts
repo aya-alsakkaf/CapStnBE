@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Question from "../../models/Question";
+import Question from "../../models/question";
 
 const createQuestion = async (
   req: Request,

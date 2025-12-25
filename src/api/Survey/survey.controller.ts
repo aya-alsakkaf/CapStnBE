@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Survey from "../../models/Survey";
+import Survey from "../../models/survey";
 import mongoose from "mongoose";
 import { customRequestType } from "../../types/http";
 

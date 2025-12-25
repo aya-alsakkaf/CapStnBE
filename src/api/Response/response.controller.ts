@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response as ExpressResponse } from "express";
-import Response from "../../models/Response";
+import Response from "../../models/response";
 import mongoose from "mongoose";
 import { customRequestType } from "../../types/http";
 
